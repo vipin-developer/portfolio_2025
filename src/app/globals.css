@@ -1,8 +1,12 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 @theme inline {
@@ -22,5 +26,83 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+@keyframes windowMinimize {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.8); }
+}
+.animate-window-minimize {
+  animation: windowMinimize 0.3s forwards;
+}
+
+@keyframes windowRestore {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-window-restore {
+  animation: windowRestore 0.3s;
+}
+
+@keyframes asciiScanline {
+  0% { top: 0; }
+  90% { top: 80%; }
+  100% { top: 0; }
+}
+.ascii-scanline {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 1.5em;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(0,255,255,0.15) 0%, rgba(0,255,255,0.35) 50%, rgba(0,255,255,0.15) 100%);
+  pointer-events: none;
+  animation: asciiScanline 2.2s linear infinite;
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+@keyframes glitchFlicker {
+  0% { opacity: 0.7; transform: scale(1.01) skewX(0deg); filter: brightness(1.2); }
+  10% { opacity: 1; transform: scale(1.02) skewX(-2deg); filter: brightness(1.4) hue-rotate(10deg); }
+  20% { opacity: 0.8; transform: scale(0.99) skewX(2deg); filter: brightness(0.9) hue-rotate(-10deg); }
+  30% { opacity: 1; transform: scale(1.01) skewX(0deg); filter: brightness(1.1); }
+  100% { opacity: 1; transform: scale(1) skewX(0deg); filter: none; }
+}
+.glitch-flicker {
+  animation: glitchFlicker 0.32s linear;
+}
+
+@keyframes osGlitchFlicker {
+  0% { opacity: 0.7; filter: brightness(1.2) contrast(1.2); }
+  10% { opacity: 1; filter: brightness(1.4) contrast(1.4) hue-rotate(10deg); }
+  20% { opacity: 0.8; filter: brightness(0.9) contrast(0.9) hue-rotate(-10deg); }
+  30% { opacity: 1; filter: brightness(1.1) contrast(1.1); }
+  100% { opacity: 1; filter: none; }
+}
+.os-glitch-flicker {
+  animation: osGlitchFlicker 0.38s linear;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Fira+Mono:wght@400;700&family=Source+Code+Pro:wght@400;700&family=Inter:wght@400;700&display=swap');
+
+.font-jetbrains {
+  font-family: 'JetBrains Mono', monospace;
+}
+.font-fira {
+  font-family: 'Fira Mono', monospace;
+}
+.font-source {
+  font-family: 'Source Code Pro', monospace;
+}
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+.font-sans {
+  font-family: system-ui, sans-serif;
 }
