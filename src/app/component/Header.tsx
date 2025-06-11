@@ -29,7 +29,7 @@ const Header = React.memo(({ font, setFont }: HeaderProps) => {
     <header className="absolute top-0 left-0 right-0 bg-black/30 border-b-2 border-cyan-400/50 p-3 flex justify-between items-center text-sm z-[100]">
       <div className="flex items-center gap-4">
         <h1 className="text-lg font-bold text-cyan-400 animate-pulse-slow">
-          GHOST_OS v4.0
+          GHOST_OS v1.0.0
         </h1>
         <div className="hidden sm:flex items-center gap-2">
           <Cpu size={16} className="text-green-400" />
